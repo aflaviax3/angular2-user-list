@@ -1,0 +1,27 @@
+<div class="page-header text-center">
+  <h1>Users</h1>
+</div>
+
+<div class="user-list row" *ngIf="users">
+  <div class="col-sm-4 col-xs-12" *ngFor="let user of pagedUsers" [routerLink]="['/detail', user.name.first]">
+      <div class="user-card thumbnail text-center" (click)="gotoDetail(user)">
+          <img [src]="user.picture.medium" class="user-avatar img-rounded"/>
+          <h2>{{user.name.first}} {{user.name.last}}</h2>
+      </div>
+  </div>
+</div>
+
+<!-- pager -->
+<div class="row text-center">
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+      <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+      <a (click)="setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+      <a (click)="setPage(pager.currentPage + 1)">Next</a>
+    </li>
+  </ul>
+</div>

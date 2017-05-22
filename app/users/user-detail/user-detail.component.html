@@ -1,0 +1,28 @@
+<div class="page-header text-center">
+  <h1>User details</h1>
+</div>
+<div *ngIf="user" class="container col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+    <div class="row text-center">
+        <div class="thumbnail">
+          <img [src]="user.picture.large" class="user-avatar img-rounded"/>
+          <h2>{{user.name.first}} {{user.name.last}}</h2>
+          <div class="form-group">
+            <label>ID: </label>{{user.id.value}}
+          </div>
+          <div class="form-group">
+            <label>EMAIL: </label>{{user.email}}
+          </div>
+          <div class="form-group">
+            <label>BIRTHDATE: </label>{{user.dob | date: 'dd/MM/yyyy'}}
+          </div>
+          <div class="form-group">
+            <label>ADDRESS: </label>{{user.location.street}}, {{user.location.city}} - {{user.location.state}}
+          </div>
+          <div class="form-group">
+            <label>PHONE: </label>{{user.phone}}
+          </div>
+          <button class="btn btn-primary btn-block" (click)="goBack()">< Back</button>
+
+        </div>
+    </div>
+</div>
